@@ -23,26 +23,45 @@ const VegetableCard: React.FC<VegetableCardProps> = ({ vegetable, animationDelay
   };
 
   // Format price with correct currency symbol, handling null/undefined values
-  const formatPrice = (price: number | null | undefined) => {
+  const formatPrice = (price: string | number | null | undefined) => {
     if (price === null || price === undefined) {
       return 'Price unavailable';
     }
-    return `NPR ${price.toFixed(2)}`;
+    const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
+    return `NPR ${numericPrice.toFixed(2)}`;
   };
 
   return (
     <div 
-      className={`vegetable-card animate-fade-in-up`}
+      className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-all duration-200 animate-fade-in-up"
       style={{ animationDelay: `${animationDelay}ms` }}
     >
-      <div className="vegetable-card-header">
-        <span className="badge">Vegetable</span>
+      <div className="flex justify-between items-start mb-2">
+        <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+          {vegetable.unit}
+        </span>
       </div>
-      <div className="vegetable-card-body">
-        <h3 className="vegetable-name">{vegetable.name}</h3>
-        <p className="vegetable-price">{formatPrice(vegetable.price)}</p>
-        <p className="vegetable-date">
-          Last updated: {formatDate(vegetable.updated_at)}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-900">{vegetable.name}</h3>
+        <p className="text-sm text-gray-500">{vegetable.name_nepali}</p>
+        
+        <div className="grid grid-cols-3 gap-2 text-sm">
+          <div className="bg-green-50 p-2 rounded">
+            <p className="text-green-800 font-medium">Min</p>
+            <p>{formatPrice(vegetable.min_price)}</p>
+          </div>
+          <div className="bg-blue-50 p-2 rounded">
+            <p className="text-blue-800 font-medium">Avg</p>
+            <p>{formatPrice(vegetable.avg_price)}</p>
+          </div>
+          <div className="bg-red-50 p-2 rounded">
+            <p className="text-red-800 font-medium">Max</p>
+            <p>{formatPrice(vegetable.max_price)}</p>
+          </div>
+        </div>
+        
+        <p className="text-xs text-gray-500 mt-3">
+          Updated: {formatDate(vegetable.scrape_date)}
         </p>
       </div>
     </div>

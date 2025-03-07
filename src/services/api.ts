@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 // Create an Axios instance with default config
@@ -14,10 +13,14 @@ const api = axios.create({
 export interface Vegetable {
   id: number;
   name: string;
-  price: number | null;
-  updated_at: string;
-  scrape_date?: string;
-  // Add any other fields that your API returns
+  name_nepali: string;
+  unit: string;
+  min_price: string | number;
+  max_price: string | number;
+  avg_price: string | number;
+  scrape_date: string;
+  price?: number | null;
+  updated_at?: string;
 }
 
 // API functions
@@ -55,8 +58,9 @@ export const getVegetables = async (): Promise<Vegetable[]> => {
       // If response.data has keys that could be vegetable IDs
       const potentialVegetableArray = Object.values(response.data);
       if (potentialVegetableArray.length > 0 && 
+          potentialVegetableArray[0] && 
           typeof potentialVegetableArray[0] === 'object' && 
-          potentialVegetableArray[0].name) {
+          'name' in potentialVegetableArray[0]) {
         return potentialVegetableArray as Vegetable[];
       }
     }
