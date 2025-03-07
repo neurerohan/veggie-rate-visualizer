@@ -10,16 +10,23 @@ interface VegetableCardProps {
 const VegetableCard: React.FC<VegetableCardProps> = ({ vegetable, animationDelay = 0 }) => {
   // Format date to be more readable
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    }).format(date);
+    try {
+      const date = new Date(dateString);
+      return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }).format(date);
+    } catch (error) {
+      return 'Date unavailable';
+    }
   };
 
-  // Format price with correct currency symbol
-  const formatPrice = (price: number) => {
+  // Format price with correct currency symbol, handling null/undefined values
+  const formatPrice = (price: number | null | undefined) => {
+    if (price === null || price === undefined) {
+      return 'Price unavailable';
+    }
     return `NPR ${price.toFixed(2)}`;
   };
 

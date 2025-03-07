@@ -14,8 +14,9 @@ const api = axios.create({
 export interface Vegetable {
   id: number;
   name: string;
-  price: number;
+  price: number | null;
   updated_at: string;
+  scrape_date?: string;
   // Add any other fields that your API returns
 }
 
@@ -23,24 +24,44 @@ export interface Vegetable {
 export const getVegetables = async (): Promise<Vegetable[]> => {
   try {
     const response = await api.get('/api/vegetables/');
-    // Check if response.data is an array, otherwise handle appropriately
-    // Some APIs wrap the data in an object like { results: [...] }
+    console.log('API response:', response.data);
+    
+    // Check if response.data is an array
     if (Array.isArray(response.data)) {
       return response.data;
-    } else if (response.data && typeof response.data === 'object') {
-      // If data is an object, check if it has a results property or similar
+    }
+    
+    // Check if response.data is an object with results
+    if (response.data && typeof response.data === 'object') {
+      // Django REST framework typically uses 'results' for paginated data
       if (Array.isArray(response.data.results)) {
         return response.data.results;
-      } else if (Array.isArray(response.data.data)) {
+      }
+      
+      // Check for other common patterns
+      if (Array.isArray(response.data.data)) {
         return response.data.data;
-      } else if (Array.isArray(response.data.vegetables)) {
+      }
+      
+      if (Array.isArray(response.data.vegetables)) {
         return response.data.vegetables;
       }
-      // If it's an object but doesn't have any of these arrays, log it for debugging
-      console.log('API response format:', response.data);
-      return [];
+      
+      // If it's the root object itself and has expected properties of a vegetable
+      if (response.data.id && response.data.name) {
+        return [response.data];
+      }
+      
+      // If response.data has keys that could be vegetable IDs
+      const potentialVegetableArray = Object.values(response.data);
+      if (potentialVegetableArray.length > 0 && 
+          typeof potentialVegetableArray[0] === 'object' && 
+          potentialVegetableArray[0].name) {
+        return potentialVegetableArray as Vegetable[];
+      }
     }
-    // If all else fails, return an empty array
+    
+    console.error('Unexpected API response format:', response.data);
     return [];
   } catch (error) {
     console.error('Error fetching vegetables:', error);
