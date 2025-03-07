@@ -37,6 +37,16 @@ const VegetableList: React.FC<VegetableListProps> = ({
     );
   }
 
+  // Safety check - ensure vegetables is an array
+  if (!vegetables || !Array.isArray(vegetables)) {
+    console.error('Expected vegetables to be an array but got:', vegetables);
+    return (
+      <div className="text-center py-12">
+        <p className="text-muted-foreground">No vegetables data available.</p>
+      </div>
+    );
+  }
+
   if (vegetables.length === 0) {
     return (
       <div className="text-center py-12">
@@ -49,7 +59,7 @@ const VegetableList: React.FC<VegetableListProps> = ({
     <div className="vegetable-container">
       {vegetables.map((vegetable, index) => (
         <VegetableCard 
-          key={vegetable.id} 
+          key={vegetable.id || index} 
           vegetable={vegetable} 
           animationDelay={index * 50}
         />

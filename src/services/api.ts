@@ -23,7 +23,25 @@ export interface Vegetable {
 export const getVegetables = async (): Promise<Vegetable[]> => {
   try {
     const response = await api.get('/api/vegetables/');
-    return response.data;
+    // Check if response.data is an array, otherwise handle appropriately
+    // Some APIs wrap the data in an object like { results: [...] }
+    if (Array.isArray(response.data)) {
+      return response.data;
+    } else if (response.data && typeof response.data === 'object') {
+      // If data is an object, check if it has a results property or similar
+      if (Array.isArray(response.data.results)) {
+        return response.data.results;
+      } else if (Array.isArray(response.data.data)) {
+        return response.data.data;
+      } else if (Array.isArray(response.data.vegetables)) {
+        return response.data.vegetables;
+      }
+      // If it's an object but doesn't have any of these arrays, log it for debugging
+      console.log('API response format:', response.data);
+      return [];
+    }
+    // If all else fails, return an empty array
+    return [];
   } catch (error) {
     console.error('Error fetching vegetables:', error);
     throw error;
