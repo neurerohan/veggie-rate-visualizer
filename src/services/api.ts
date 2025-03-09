@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an Axios instance with default config
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'https://api.kalimatirate.nyure.com.np',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'https://geto-006w.onrender.com/',
   headers: {
     'Content-Type': 'application/json',
   },
