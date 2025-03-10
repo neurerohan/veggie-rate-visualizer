@@ -1,21 +1,19 @@
-
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import KalimatiPrices from './pages/KalimatiPrices';
 import './App.css';
 
 const App = () => {
   return (
-    <React.Fragment>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </React.Fragment>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/kalimati-tarkari-rate-today/" element={<KalimatiPrices />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 };
 
