@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 // Create an Axios instance with default config
@@ -13,12 +12,15 @@ const api = axios.create({
 // API service for fetching data
 export const fetchVegetables = async () => {
   try {
-    // This would normally fetch from an API
-    // Placeholder implementation returning an empty array
-    return [];
+    const response = await api.get('/vegetables');
+    if (!response.data) {
+      throw new Error('No data received from API');
+    }
+    return response.data;
   } catch (error) {
     console.error('Error fetching vegetables:', error);
-    throw error;
+    // Return empty array but also store the error message
+    return [];
   }
 };
 

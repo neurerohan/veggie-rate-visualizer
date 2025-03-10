@@ -13,13 +13,18 @@ const Index = () => {
     const loadVegetables = async () => {
       try {
         setLoading(true);
+        setError(null);
         const data = await fetchVegetables();
-        setVegetables(data);
-        setLoading(false);
+        if (data && data.length > 0) {
+          setVegetables(data);
+        } else {
+          setError('No vegetables data available. Please try again later.');
+        }
       } catch (err) {
-        setError('Failed to load vegetables data');
-        setLoading(false);
+        setError('Failed to load vegetables data. Please check your connection and try again.');
         console.error('Error loading vegetables:', err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -66,51 +71,69 @@ const Index = () => {
     <div className="vegetables-page">
       <h1>Kalimati Vegetable Prices</h1>
 
-      <div className="controls">
-        <input
-          type="text"
-          placeholder="Search vegetables..."
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-          className="search-input"
-        />
-
-        <select 
-          value={sortOption} 
-          onChange={(e) => handleSortChange(e.target.value)}
-          className="sort-select"
-        >
-          <option value="name-asc">Name (A-Z)</option>
-          <option value="name-desc">Name (Z-A)</option>
-          <option value="price-asc">Price (Low to High)</option>
-          <option value="price-desc">Price (High to Low)</option>
-        </select>
-      </div>
-
       {loading ? (
-        <div className="loading">Loading...</div>
-      ) : error ? (
-        <div className="error">{error}</div>
-      ) : (
-        <div className="vegetables-grid">
-          {sortedVegetables.map(vegetable => (
-            <div key={vegetable.id} className="vegetable-card">
-              <h2>{vegetable.name}</h2>
-              <p className="nepali-name">{vegetable.name_nepali}</p>
-              <div className="price">
-                <span>Min: Rs. {vegetable.min_price}</span>
-                <span>Max: Rs. {vegetable.max_price}</span>
-              </div>
-              <div className="avg-price">
-                <span>Avg: Rs. {vegetable.avg_price}</span>
-              </div>
-              <div className="meta">
-                <span>Per {vegetable.unit}</span>
-                <span>Date: {new Date(vegetable.scrape_date).toLocaleDateString()}</span>
-              </div>
-            </div>
-          ))}
+        <div className="loading-container">
+          <div className="loading">Loading vegetables data...</div>
         </div>
+      ) : error ? (
+        <div className="error-container">
+          <div className="error">
+            <h2>Error</h2>
+            <p>{error}</p>
+            <button onClick={() => window.location.reload()} className="retry-button">
+              Retry
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="controls">
+            <input
+              type="text"
+              placeholder="Search vegetables..."
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+              className="search-input"
+            />
+
+            <select 
+              value={sortOption} 
+              onChange={(e) => handleSortChange(e.target.value)}
+              className="sort-select"
+            >
+              <option value="name-asc">Name (A-Z)</option>
+              <option value="name-desc">Name (Z-A)</option>
+              <option value="price-asc">Price (Low to High)</option>
+              <option value="price-desc">Price (High to Low)</option>
+            </select>
+          </div>
+
+          {sortedVegetables.length === 0 ? (
+            <div className="no-results">
+              No vegetables found matching your search.
+            </div>
+          ) : (
+            <div className="vegetables-grid">
+              {sortedVegetables.map(vegetable => (
+                <div key={vegetable.id} className="vegetable-card">
+                  <h2>{vegetable.name}</h2>
+                  <p className="nepali-name">{vegetable.name_nepali}</p>
+                  <div className="price">
+                    <span>Min: Rs. {vegetable.min_price}</span>
+                    <span>Max: Rs. {vegetable.max_price}</span>
+                  </div>
+                  <div className="avg-price">
+                    <span>Avg: Rs. {vegetable.avg_price}</span>
+                  </div>
+                  <div className="meta">
+                    <span>Per {vegetable.unit}</span>
+                    <span>Date: {new Date(vegetable.scrape_date).toLocaleDateString()}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
