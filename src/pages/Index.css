@@ -6,6 +6,7 @@
   width: 100%;
   box-sizing: border-box;
   margin: 0;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -68,12 +69,13 @@ h1 {
 
 .vegetables-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   padding: 0.5rem;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .vegetable-card {
@@ -86,6 +88,7 @@ h1 {
   position: relative;
   overflow: hidden;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .vegetable-card::before {
@@ -257,10 +260,18 @@ h1 {
   }
 }
 
+/* Tablet and Smaller Desktop */
+@media (max-width: 1200px) {
+  .vegetables-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .vegetables-page {
     padding: 0.5rem;
+    overflow-x: hidden;
   }
 
   h1 {
@@ -279,7 +290,7 @@ h1 {
   }
 
   .vegetables-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 0.5rem;
   }
@@ -310,10 +321,15 @@ h1 {
 @media (max-width: 480px) {
   .vegetables-page {
     padding: 0.5rem;
+    overflow-x: hidden;
   }
 
   h1 {
     font-size: 1.5rem;
+  }
+
+  .vegetables-grid {
+    grid-template-columns: 1fr;
   }
 
   .vegetable-card {
