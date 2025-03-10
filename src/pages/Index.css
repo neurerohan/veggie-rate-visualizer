@@ -613,6 +613,7 @@ h1 {
   transition: all 0.3s ease;
   padding: 0;
   line-height: 1;
+  margin: 0 auto;
 }
 
 .expand-button:hover {
@@ -691,8 +692,10 @@ h1 {
     display: table-cell;
   }
 
-  /* Hide desktop-only columns */
+  /* Hide desktop-only columns on mobile */
+  .vegetable-table th:nth-child(3),
   .vegetable-table th:nth-child(4),
+  .vegetable-table td:nth-child(3),
   .vegetable-table td:nth-child(4) {
     display: none;
   }

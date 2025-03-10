@@ -58,6 +58,8 @@ const VegetableTable = ({ vegetables }) => {
           <tr>
             <th>Name</th>
             <th>Unit</th>
+            <th>Min</th>
+            <th>Max</th>
             <th>Avg</th>
             <th className="mobile-only">Details</th>
           </tr>
@@ -68,6 +70,8 @@ const VegetableTable = ({ vegetables }) => {
               <tr>
                 <td>{vegetable.name}</td>
                 <td>{vegetable.unit}</td>
+                <td className="price-cell min">Rs. {Math.round(vegetable.min_price)}</td>
+                <td className="price-cell max">Rs. {Math.round(vegetable.max_price)}</td>
                 <td className="price-cell avg">Rs. {Math.round(vegetable.avg_price)}</td>
                 <td className="mobile-only">
                   <button 
@@ -80,7 +84,7 @@ const VegetableTable = ({ vegetables }) => {
                 </td>
               </tr>
               <tr className={`price-details ${expandedRows.has(vegetable.id) ? 'expanded' : ''}`}>
-                <td colSpan="4">
+                <td colSpan="6">
                   <div className="price-details-content">
                     <div className="price-detail-item">
                       <span className="label">Min:</span>
