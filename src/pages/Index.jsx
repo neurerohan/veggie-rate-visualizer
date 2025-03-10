@@ -9,25 +9,28 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('name-asc');
 
-  useEffect(() => {
-    const loadVegetables = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const data = await fetchVegetables();
-        if (data && data.length > 0) {
-          setVegetables(data);
-        } else {
-          setError('No vegetables data available. Please try again later.');
-        }
-      } catch (err) {
-        setError('Failed to load vegetables data. Please check your connection and try again.');
-        console.error('Error loading vegetables:', err);
-      } finally {
-        setLoading(false);
+  const loadVegetables = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      console.log('Starting to fetch vegetables...');
+      const data = await fetchVegetables();
+      console.log('Received data:', data);
+      
+      if (data && data.length > 0) {
+        setVegetables(data);
+      } else {
+        setError('No vegetables data available. The API returned an empty list.');
       }
-    };
+    } catch (err) {
+      console.error('Error in loadVegetables:', err);
+      setError(err.message || 'Failed to load vegetables data. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     loadVegetables();
   }, []);
 
@@ -80,7 +83,7 @@ const Index = () => {
           <div className="error">
             <h2>Error</h2>
             <p>{error}</p>
-            <button onClick={() => window.location.reload()} className="retry-button">
+            <button onClick={loadVegetables} className="retry-button">
               Retry
             </button>
           </div>
