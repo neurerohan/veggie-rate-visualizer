@@ -3,33 +3,29 @@ import { fetchVegetables } from '../services/api.js';
 import './Index.css';
 
 const VegetableCard = ({ vegetable }) => {
-  const minPrice = Math.min(...vegetable.prices.map(p => p.price));
-  const maxPrice = Math.max(...vegetable.prices.map(p => p.price));
-  const avgPrice = Math.round(vegetable.prices.reduce((sum, p) => sum + p.price, 0) / vegetable.prices.length);
-
   return (
     <div className="vegetable-card">
       <h2>{vegetable.name}</h2>
-      <div className="nepali-name">{vegetable.nepaliName}</div>
+      <div className="nepali-name">{vegetable.name_nepali}</div>
       
       <div className="price-container">
         <div className="price-box min">
           <span className="price-label">Min</span>
-          <span className="price-value">Rs. {minPrice}</span>
+          <span className="price-value">Rs. {vegetable.min_price}</span>
         </div>
         <div className="price-box avg">
           <span className="price-label">Avg</span>
-          <span className="price-value">Rs. {avgPrice}</span>
+          <span className="price-value">Rs. {vegetable.avg_price}</span>
         </div>
         <div className="price-box max">
           <span className="price-label">Max</span>
-          <span className="price-value">Rs. {maxPrice}</span>
+          <span className="price-value">Rs. {vegetable.max_price}</span>
         </div>
       </div>
 
       <div className="meta">
         <span>Per ({vegetable.unit})</span>
-        <span>Date: {new Date(vegetable.prices[0].date).toLocaleDateString()}</span>
+        <span>Date: {new Date(vegetable.scrape_date).toLocaleDateString()}</span>
       </div>
     </div>
   );
