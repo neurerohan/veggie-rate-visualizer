@@ -435,17 +435,49 @@ h1 {
   }
 
   .vegetable-table {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     min-width: 600px;
   }
 
   .vegetable-table th,
   .vegetable-table td {
-    padding: 0.6rem 0.4rem;
+    padding: 0.5rem 0.3rem;
+  }
+
+  .vegetable-table td {
+    font-size: 0.8rem;
+  }
+
+  .vegetable-table td:nth-child(2) {
+    font-size: 0.75rem;
+  }
+
+  .vegetable-table td:nth-child(3) {
+    font-size: 0.7rem;
   }
 
   .price-cell {
-    padding-right: 1rem;
+    font-size: 0.9rem;
+    padding-right: 0.8rem;
+  }
+
+  /* Show mobile-only elements */
+  .mobile-only {
+    display: table-cell;
+  }
+
+  /* Hide desktop-only columns on mobile */
+  .vegetable-table th:nth-child(4),
+  .vegetable-table th:nth-child(5),
+  .vegetable-table td:nth-child(4),
+  .vegetable-table td:nth-child(5) {
+    display: none;
+  }
+
+  .expand-button {
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
   }
 }
 
@@ -507,17 +539,35 @@ h1 {
   }
 
   .vegetable-table {
-    font-size: 0.85rem;
-    min-width: 500px;
+    font-size: 0.8rem;
   }
 
   .vegetable-table th,
   .vegetable-table td {
-    padding: 0.5rem 0.3rem;
+    padding: 0.4rem 0.3rem;
+  }
+
+  .vegetable-table td {
+    font-size: 0.75rem;
+  }
+
+  .vegetable-table td:nth-child(2) {
+    font-size: 0.7rem;
+  }
+
+  .vegetable-table td:nth-child(3) {
+    font-size: 0.65rem;
   }
 
   .price-cell {
-    padding-right: 0.8rem;
+    font-size: 0.85rem;
+    padding-right: 0.6rem;
+  }
+
+  .expand-button {
+    width: 22px;
+    height: 22px;
+    font-size: 0.9rem;
   }
 }
 
@@ -542,7 +592,7 @@ h1 {
 
 .vegetable-table th,
 .vegetable-table td {
-  padding: 0.8rem 0.5rem;
+  padding: 0.6rem 0.4rem;
   text-align: left;
   border-bottom: 1px solid #c0c0c0;
   border-right: 1px solid #c0c0c0;
@@ -558,7 +608,7 @@ h1 {
   background: rgba(76, 175, 80, 0.1);
   color: #2e7d32;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -571,12 +621,23 @@ h1 {
 
 .vegetable-table td {
   color: #333;
+  font-size: 0.85rem;
+}
+
+.vegetable-table td:nth-child(2) { /* Name column */
+  font-size: 0.8rem;
+}
+
+.vegetable-table td:nth-child(3) { /* Unit column */
+  font-size: 0.75rem;
+  color: #666;
 }
 
 .price-cell {
   font-weight: 500;
   text-align: right;
-  padding-right: 1.5rem;
+  padding-right: 1rem;
+  font-size: 0.95rem; /* Keep price size larger */
 }
 
 .price-cell.min {
@@ -594,17 +655,18 @@ h1 {
 /* Mobile-only elements */
 .mobile-only {
   display: none;
+  width: 40px;
 }
 
 /* Expand button styles */
 .expand-button {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 2px solid #4caf50;
   background: transparent;
   color: #4caf50;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   display: flex;
