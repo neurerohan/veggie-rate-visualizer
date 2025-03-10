@@ -11,6 +11,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/kalimati-tarkari-rate-today" element={<KalimatiPrices />} />
+        <Route path="/kalimati-tarkari-rate-today/" element={<KalimatiPrices />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
