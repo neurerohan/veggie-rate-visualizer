@@ -3,6 +3,11 @@ import { fetchVegetables } from '../services/api.js';
 import './Index.css';
 
 const VegetableCard = ({ vegetable }) => {
+  // Format price to remove decimal places
+  const formatPrice = (price) => {
+    return Math.round(price).toString();
+  };
+
   return (
     <div className="vegetable-card">
       <h2>{vegetable.name}</h2>
@@ -11,15 +16,15 @@ const VegetableCard = ({ vegetable }) => {
       <div className="price-container">
         <div className="price-box min">
           <span className="price-label">Min</span>
-          <span className="price-value">{vegetable.min_price}</span>
+          <span className="price-value">{formatPrice(vegetable.min_price)}</span>
         </div>
         <div className="price-box avg">
           <span className="price-label">Avg</span>
-          <span className="price-value">{vegetable.avg_price}</span>
+          <span className="price-value">{formatPrice(vegetable.avg_price)}</span>
         </div>
         <div className="price-box max">
           <span className="price-label">Max</span>
-          <span className="price-value">{vegetable.max_price}</span>
+          <span className="price-value">{formatPrice(vegetable.max_price)}</span>
         </div>
       </div>
 
