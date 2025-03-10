@@ -635,30 +635,36 @@ h1 {
   display: table-row;
 }
 
+.price-details td {
+  padding: 0 !important;
+}
+
 .price-details-content {
   display: flex;
   justify-content: space-around;
-  padding: 0.8rem;
-  gap: 1rem;
+  padding: 1rem;
+  gap: 2rem;
+  width: 100%;
 }
 
 .price-detail-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  justify-content: space-between;
+  gap: 1rem;
+  min-width: 200px;
 }
 
 .price-detail-item .label {
   font-weight: 500;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 .price-detail-item .price {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 .price-detail-item .price.min {
@@ -671,85 +677,28 @@ h1 {
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .table-container {
-    margin: 0 -0.5rem 1.5rem -0.5rem;
-    border-radius: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-
-  .vegetable-table {
-    font-size: 0.9rem;
-  }
-
-  .vegetable-table th,
-  .vegetable-table td {
-    padding: 0.8rem 0.5rem;
-  }
-
-  .price-cell {
-    padding-right: 1rem;
-  }
-
-  /* Show mobile-only elements */
-  .mobile-only {
-    display: table-cell;
-    width: 50px;
-  }
-
-  /* Hide desktop-only columns on mobile */
-  .vegetable-table th:nth-child(4),
-  .vegetable-table th:nth-child(5),
-  .vegetable-table td:nth-child(4),
-  .vegetable-table td:nth-child(5) {
-    display: none;
-  }
-
-  /* Adjust price details for mobile */
   .price-details-content {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
     padding: 0.8rem;
   }
 
   .price-detail-item {
     justify-content: space-between;
-    padding: 0.3rem 0;
+    width: 100%;
+    min-width: unset;
   }
 
   .price-detail-item .label {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .price-detail-item .price {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .table-container {
-    margin: 0 -0.5rem 1rem -0.5rem;
-  }
-
-  .vegetable-table {
-    font-size: 0.85rem;
-  }
-
-  .vegetable-table th,
-  .vegetable-table td {
-    padding: 0.6rem 0.4rem;
-  }
-
-  .price-cell {
-    padding-right: 0.8rem;
-  }
-
-  .expand-button {
-    width: 28px;
-    height: 28px;
-    font-size: 1rem;
-  }
-
   .price-details-content {
     padding: 0.6rem;
   }
@@ -759,10 +708,10 @@ h1 {
   }
 
   .price-detail-item .label {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   .price-detail-item .price {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }
