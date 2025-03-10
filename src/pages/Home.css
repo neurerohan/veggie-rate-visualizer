@@ -23,6 +23,30 @@
   font-size: 1.2rem;
   max-width: 600px;
   line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.view-prices-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #2e7d32;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-prices-btn:hover {
+  background-color: #1b5e20;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.view-prices-btn:active {
+  transform: translateY(0);
 }
 
 @media (max-width: 768px) {
@@ -37,6 +61,11 @@
   .home-page p {
     font-size: 1rem;
   }
+
+  .view-prices-btn {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -46,5 +75,10 @@
 
   .home-page p {
     font-size: 0.9rem;
+  }
+
+  .view-prices-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
   }
 } 
