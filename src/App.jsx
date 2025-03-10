@@ -1,21 +1,22 @@
 
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import Index from './pages/Index'
-import NotFound from './pages/NotFound'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <div className="app-container">
+    <React.Fragment>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
-    </BrowserRouter>
-  )
-}
+      </BrowserRouter>
+    </React.Fragment>
+  );
+};
 
-export default App
+export default App;
