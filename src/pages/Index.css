@@ -646,15 +646,19 @@ h1 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .price-detail-item .label {
   font-weight: 500;
   color: #666;
+  font-size: 0.9rem;
 }
 
 .price-detail-item .price {
   font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .price-detail-item .price.min {
@@ -704,12 +708,21 @@ h1 {
   /* Adjust price details for mobile */
   .price-details-content {
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem;
+    gap: 0.8rem;
+    padding: 0.8rem;
   }
 
   .price-detail-item {
     justify-content: space-between;
+    padding: 0.3rem 0;
+  }
+
+  .price-detail-item .label {
+    font-size: 0.85rem;
+  }
+
+  .price-detail-item .price {
+    font-size: 0.85rem;
   }
 }
 
@@ -738,6 +751,18 @@ h1 {
   }
 
   .price-details-content {
-    padding: 0.4rem;
+    padding: 0.6rem;
+  }
+
+  .price-detail-item {
+    padding: 0.2rem 0;
+  }
+
+  .price-detail-item .label {
+    font-size: 0.8rem;
+  }
+
+  .price-detail-item .price {
+    font-size: 0.8rem;
   }
 }
