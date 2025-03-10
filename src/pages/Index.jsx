@@ -2,6 +2,39 @@ import React, { useState, useEffect } from 'react';
 import { fetchVegetables } from '../services/api.js';
 import './Index.css';
 
+const VegetableCard = ({ vegetable }) => {
+  const minPrice = Math.min(...vegetable.prices.map(p => p.price));
+  const maxPrice = Math.max(...vegetable.prices.map(p => p.price));
+  const avgPrice = Math.round(vegetable.prices.reduce((sum, p) => sum + p.price, 0) / vegetable.prices.length);
+
+  return (
+    <div className="vegetable-card">
+      <h2>{vegetable.name}</h2>
+      <div className="nepali-name">{vegetable.nepaliName}</div>
+      
+      <div className="price-container">
+        <div className="price-box min">
+          <span className="price-label">Min</span>
+          <span className="price-value">Rs. {minPrice}</span>
+        </div>
+        <div className="price-box avg">
+          <span className="price-label">Avg</span>
+          <span className="price-value">Rs. {avgPrice}</span>
+        </div>
+        <div className="price-box max">
+          <span className="price-label">Max</span>
+          <span className="price-value">Rs. {maxPrice}</span>
+        </div>
+      </div>
+
+      <div className="meta">
+        <span>Per ({vegetable.unit})</span>
+        <span>Date: {new Date(vegetable.prices[0].date).toLocaleDateString()}</span>
+      </div>
+    </div>
+  );
+};
+
 const Index = () => {
   const [vegetables, setVegetables] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -118,21 +151,7 @@ const Index = () => {
           ) : (
             <div className="vegetables-grid">
               {sortedVegetables.map(vegetable => (
-                <div key={vegetable.id} className="vegetable-card">
-                  <h2>{vegetable.name}</h2>
-                  <p className="nepali-name">{vegetable.name_nepali}</p>
-                  <div className="price">
-                    <span>Min: Rs. {vegetable.min_price}</span>
-                    <span>Max: Rs. {vegetable.max_price}</span>
-                  </div>
-                  <div className="avg-price">
-                    <span>Avg: Rs. {vegetable.avg_price}</span>
-                  </div>
-                  <div className="meta">
-                    <span>Per {vegetable.unit}</span>
-                    <span>Date: {new Date(vegetable.scrape_date).toLocaleDateString()}</span>
-                  </div>
-                </div>
+                <VegetableCard key={vegetable.id} vegetable={vegetable} />
               ))}
             </div>
           )}
