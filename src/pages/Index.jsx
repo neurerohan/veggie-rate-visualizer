@@ -11,15 +11,15 @@ const VegetableCard = ({ vegetable }) => {
       <div className="price-container">
         <div className="price-box min">
           <span className="price-label">Min</span>
-          <span className="price-value">Rs. {vegetable.min_price}</span>
+          <span className="price-value">{vegetable.min_price}</span>
         </div>
         <div className="price-box avg">
           <span className="price-label">Avg</span>
-          <span className="price-value">Rs. {vegetable.avg_price}</span>
+          <span className="price-value">{vegetable.avg_price}</span>
         </div>
         <div className="price-box max">
           <span className="price-label">Max</span>
-          <span className="price-value">Rs. {vegetable.max_price}</span>
+          <span className="price-value">{vegetable.max_price}</span>
         </div>
       </div>
 
