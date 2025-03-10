@@ -456,6 +456,7 @@ h1 {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  border: 1px solid #f0f0f0;
 }
 
 .vegetable-table th,
@@ -463,7 +464,13 @@ h1 {
   padding: 0.8rem 0.5rem;
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;
   white-space: nowrap;
+}
+
+.vegetable-table th:last-child,
+.vegetable-table td:last-child {
+  border-right: none;
 }
 
 .vegetable-table th {
