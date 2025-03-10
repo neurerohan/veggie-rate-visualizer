@@ -690,13 +690,14 @@ h1 {
   /* Show mobile-only elements */
   .mobile-only {
     display: table-cell;
+    width: 50px;
   }
 
   /* Hide desktop-only columns on mobile */
-  .vegetable-table th:nth-child(3),
   .vegetable-table th:nth-child(4),
-  .vegetable-table td:nth-child(3),
-  .vegetable-table td:nth-child(4) {
+  .vegetable-table th:nth-child(5),
+  .vegetable-table td:nth-child(4),
+  .vegetable-table td:nth-child(5) {
     display: none;
   }
 
