@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchVegetables } from '../services/api.js';
-import './KalimatiPrices.css';
+import './KalimatiPrices.styles.css';
 
 const KalimatiPrices = () => {
   // ... existing component code ...
