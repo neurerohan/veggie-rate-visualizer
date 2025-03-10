@@ -1,2 +1,315 @@
-/* All existing CSS from Index.css */
-// ... existing code ... 
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Header Styles */
+.header {
+  background: #2e7d32;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Search and Filter Section */
+.search-filter-section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #2e7d32;
+}
+
+.sort-select {
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem;
+  color: #333;
+}
+
+.sort-select:hover {
+  border-color: #2e7d32;
+}
+
+.sort-select option {
+  padding: 0.5rem;
+  background-color: white;
+  color: #333;
+}
+
+/* Vegetable Cards Grid */
+.vegetable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.vegetable-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.vegetable-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vegetable-card h3 {
+  margin: 0 0 1rem 0;
+  color: #2e7d32;
+  font-size: 1.25rem;
+}
+
+.vegetable-card p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.vegetable-card .unit {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.price-container {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.price-box {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.price-box.min {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.price-box.max {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.price-box.avg {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+/* Vegetable Table */
+.table-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+.vegetable-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #c0c0c0;
+}
+
+.vegetable-table th,
+.vegetable-table td {
+  padding: 1rem;
+  text-align: left;
+  border: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+.vegetable-table th {
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.vegetable-table tr:hover {
+  background: #f9f9f9;
+}
+
+.price-cell {
+  font-weight: 500;
+}
+
+.price-cell.min {
+  color: #2e7d32;
+}
+
+.price-cell.max {
+  color: #c62828;
+}
+
+.price-cell.avg {
+  color: #1565c0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+
+  .search-filter-section {
+    flex-direction: column;
+  }
+
+  .search-input,
+  .sort-select {
+    width: 100%;
+  }
+
+  .vegetable-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Mobile Table Styles */
+  .table-container {
+    padding: 0;
+    border-radius: 0;
+    margin: 0 -1rem;
+  }
+
+  .vegetable-table {
+    font-size: 0.9rem;
+  }
+
+  .vegetable-table th,
+  .vegetable-table td {
+    padding: 0.75rem;
+  }
+
+  /* Hide desktop-only columns */
+  .vegetable-table th.desktop-only,
+  .vegetable-table td.desktop-only {
+    display: none;
+  }
+
+  /* Show mobile-only elements */
+  .mobile-only {
+    display: table-cell;
+  }
+
+  /* Expand button styles */
+  .expand-button {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #2e7d32;
+    border-radius: 50%;
+    background: transparent;
+    color: #2e7d32;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .expand-button:hover {
+    background: #2e7d32;
+    color: white;
+  }
+
+  .expand-button:active {
+    transform: scale(0.95);
+  }
+
+  /* Price details styles */
+  .price-details {
+    display: none;
+    background: #f9f9f9;
+  }
+
+  .price-details.expanded {
+    display: table-row;
+  }
+
+  .price-details td {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .price-details .label {
+    font-weight: 500;
+    color: #666;
+  }
+
+  .price-details .value {
+    font-weight: 500;
+  }
+
+  .price-details .value.min {
+    color: #2e7d32;
+  }
+
+  .price-details .value.max {
+    color: #c62828;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .vegetable-table {
+    font-size: 0.85rem;
+  }
+
+  .expand-button {
+    width: 20px;
+    height: 20px;
+    font-size: 1rem;
+  }
+} 
