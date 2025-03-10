@@ -440,3 +440,105 @@ h1 {
     padding: 0.6rem;
   }
 }
+
+.table-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem;
+}
+
+.vegetable-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.vegetable-table th,
+.vegetable-table td {
+  padding: 0.8rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+}
+
+.vegetable-table th {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.vegetable-table tr:hover {
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.vegetable-table td {
+  color: #333;
+}
+
+.price-cell {
+  font-weight: 500;
+  text-align: right;
+  padding-right: 1.5rem;
+}
+
+.price-cell.min {
+  color: #4caf50;
+}
+
+.price-cell.avg {
+  color: #2e7d32;
+}
+
+.price-cell.max {
+  color: #f44336;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .table-container {
+    margin-bottom: 1.5rem;
+    padding: 0.3rem;
+  }
+
+  .vegetable-table {
+    font-size: 0.9rem;
+  }
+
+  .vegetable-table th,
+  .vegetable-table td {
+    padding: 0.6rem 0.4rem;
+  }
+
+  .price-cell {
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-container {
+    margin-bottom: 1rem;
+    padding: 0.2rem;
+  }
+
+  .vegetable-table {
+    font-size: 0.85rem;
+  }
+
+  .vegetable-table th,
+  .vegetable-table td {
+    padding: 0.5rem 0.3rem;
+  }
+
+  .price-cell {
+    padding-right: 0.8rem;
+  }
+}

@@ -36,6 +36,35 @@ const VegetableCard = ({ vegetable }) => {
   );
 };
 
+const VegetableTable = ({ vegetables }) => {
+  return (
+    <div className="table-container">
+      <table className="vegetable-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Unit</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Avg</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vegetables.map(vegetable => (
+            <tr key={vegetable.id}>
+              <td>{vegetable.name}</td>
+              <td>{vegetable.unit}</td>
+              <td className="price-cell min">Rs. {Math.round(vegetable.min_price)}</td>
+              <td className="price-cell max">Rs. {Math.round(vegetable.max_price)}</td>
+              <td className="price-cell avg">Rs. {Math.round(vegetable.avg_price)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
 const Index = () => {
   const [vegetables, setVegetables] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -150,11 +179,14 @@ const Index = () => {
               No vegetables found matching your search.
             </div>
           ) : (
-            <div className="vegetables-grid">
-              {sortedVegetables.map(vegetable => (
-                <VegetableCard key={vegetable.id} vegetable={vegetable} />
-              ))}
-            </div>
+            <>
+              <VegetableTable vegetables={sortedVegetables} />
+              <div className="vegetables-grid">
+                {sortedVegetables.map(vegetable => (
+                  <VegetableCard key={vegetable.id} vegetable={vegetable} />
+                ))}
+              </div>
+            </>
           )}
         </>
       )}
