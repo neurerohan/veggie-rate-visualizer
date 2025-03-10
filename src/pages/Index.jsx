@@ -116,10 +116,18 @@ const Index = () => {
         return sorted.sort((a, b) => a.name.localeCompare(b.name));
       case 'name-desc':
         return sorted.sort((a, b) => b.name.localeCompare(a.name));
-      case 'price-asc':
-        return sorted.sort((a, b) => a.price - b.price);
-      case 'price-desc':
-        return sorted.sort((a, b) => b.price - a.price);
+      case 'min-price-asc':
+        return sorted.sort((a, b) => a.min_price - b.min_price);
+      case 'min-price-desc':
+        return sorted.sort((a, b) => b.min_price - a.min_price);
+      case 'max-price-asc':
+        return sorted.sort((a, b) => a.max_price - b.max_price);
+      case 'max-price-desc':
+        return sorted.sort((a, b) => b.max_price - a.max_price);
+      case 'avg-price-asc':
+        return sorted.sort((a, b) => a.avg_price - b.avg_price);
+      case 'avg-price-desc':
+        return sorted.sort((a, b) => b.avg_price - a.avg_price);
       default:
         return sorted;
     }
@@ -156,7 +164,7 @@ const Index = () => {
           <div className="controls">
             <input
               type="text"
-              placeholder="Search vegetables..."
+              placeholder="Search vegetables by name..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               className="search-input"
@@ -169,8 +177,12 @@ const Index = () => {
             >
               <option value="name-asc">Name (A-Z)</option>
               <option value="name-desc">Name (Z-A)</option>
-              <option value="price-asc">Price (Low to High)</option>
-              <option value="price-desc">Price (High to Low)</option>
+              <option value="min-price-asc">Min Price (Low to High)</option>
+              <option value="min-price-desc">Min Price (High to Low)</option>
+              <option value="max-price-asc">Max Price (Low to High)</option>
+              <option value="max-price-desc">Max Price (High to Low)</option>
+              <option value="avg-price-asc">Average Price (Low to High)</option>
+              <option value="avg-price-desc">Average Price (High to Low)</option>
             </select>
           </div>
 
