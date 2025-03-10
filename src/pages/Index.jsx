@@ -37,6 +37,20 @@ const VegetableCard = ({ vegetable }) => {
 };
 
 const VegetableTable = ({ vegetables }) => {
+  const [expandedRows, setExpandedRows] = useState(new Set());
+
+  const toggleRow = (id) => {
+    setExpandedRows(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
+
   return (
     <div className="table-container">
       <table className="vegetable-table">
@@ -44,20 +58,42 @@ const VegetableTable = ({ vegetables }) => {
           <tr>
             <th>Name</th>
             <th>Unit</th>
-            <th>Min</th>
-            <th>Max</th>
             <th>Avg</th>
+            <th className="mobile-only">Details</th>
           </tr>
         </thead>
         <tbody>
           {vegetables.map(vegetable => (
-            <tr key={vegetable.id}>
-              <td>{vegetable.name}</td>
-              <td>{vegetable.unit}</td>
-              <td className="price-cell min">Rs. {Math.round(vegetable.min_price)}</td>
-              <td className="price-cell max">Rs. {Math.round(vegetable.max_price)}</td>
-              <td className="price-cell avg">Rs. {Math.round(vegetable.avg_price)}</td>
-            </tr>
+            <React.Fragment key={vegetable.id}>
+              <tr>
+                <td>{vegetable.name}</td>
+                <td>{vegetable.unit}</td>
+                <td className="price-cell avg">Rs. {Math.round(vegetable.avg_price)}</td>
+                <td className="mobile-only">
+                  <button 
+                    className={`expand-button ${expandedRows.has(vegetable.id) ? 'expanded' : ''}`}
+                    onClick={() => toggleRow(vegetable.id)}
+                    aria-label="Toggle price details"
+                  >
+                    {expandedRows.has(vegetable.id) ? '−' : '+'}
+                  </button>
+                </td>
+              </tr>
+              <tr className={`price-details ${expandedRows.has(vegetable.id) ? 'expanded' : ''}`}>
+                <td colSpan="4">
+                  <div className="price-details-content">
+                    <div className="price-detail-item">
+                      <span className="label">Min:</span>
+                      <span className="price min">Rs. {Math.round(vegetable.min_price)}</span>
+                    </div>
+                    <div className="price-detail-item">
+                      <span className="label">Max:</span>
+                      <span className="price max">Rs. {Math.round(vegetable.max_price)}</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </React.Fragment>
           ))}
         </tbody>
       </table>

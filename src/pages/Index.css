@@ -521,6 +521,7 @@ h1 {
   }
 }
 
+/* Table styles */
 .table-container {
   width: 100%;
   max-width: 1200px;
@@ -590,11 +591,86 @@ h1 {
   color: #f44336;
 }
 
+/* Mobile-only elements */
+.mobile-only {
+  display: none;
+}
+
+/* Expand button styles */
+.expand-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #4caf50;
+  background: transparent;
+  color: #4caf50;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.expand-button:hover {
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.expand-button.expanded {
+  background: #4caf50;
+  color: white;
+}
+
+/* Price details styles */
+.price-details {
+  display: none;
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.price-details.expanded {
+  display: table-row;
+}
+
+.price-details-content {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.8rem;
+  gap: 1rem;
+}
+
+.price-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.price-detail-item .label {
+  font-weight: 500;
+  color: #666;
+}
+
+.price-detail-item .price {
+  font-weight: 600;
+}
+
+.price-detail-item .price.min {
+  color: #4caf50;
+}
+
+.price-detail-item .price.max {
+  color: #f44336;
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .table-container {
-    margin-bottom: 1.5rem;
-    padding: 0.3rem;
+    margin: 0 -0.5rem 1.5rem -0.5rem;
+    border-radius: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 
   .vegetable-table {
@@ -603,18 +679,39 @@ h1 {
 
   .vegetable-table th,
   .vegetable-table td {
-    padding: 0.6rem 0.4rem;
+    padding: 0.8rem 0.5rem;
   }
 
   .price-cell {
     padding-right: 1rem;
   }
+
+  /* Show mobile-only elements */
+  .mobile-only {
+    display: table-cell;
+  }
+
+  /* Hide desktop-only columns */
+  .vegetable-table th:nth-child(4),
+  .vegetable-table td:nth-child(4) {
+    display: none;
+  }
+
+  /* Adjust price details for mobile */
+  .price-details-content {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .price-detail-item {
+    justify-content: space-between;
+  }
 }
 
 @media (max-width: 480px) {
   .table-container {
-    margin-bottom: 1rem;
-    padding: 0.2rem;
+    margin: 0 -0.5rem 1rem -0.5rem;
   }
 
   .vegetable-table {
@@ -623,10 +720,20 @@ h1 {
 
   .vegetable-table th,
   .vegetable-table td {
-    padding: 0.5rem 0.3rem;
+    padding: 0.6rem 0.4rem;
   }
 
   .price-cell {
     padding-right: 0.8rem;
+  }
+
+  .expand-button {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .price-details-content {
+    padding: 0.4rem;
   }
 }
