@@ -1,6 +1,6 @@
 .vegetables-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
   padding: 2rem;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -24,13 +24,13 @@ h1 {
 
 .search-input {
   padding: 0.75rem 1rem;
-  border: 2px solid #e8e0d5;
+  border: 2px solid #f0f0f0;
   border-radius: 12px;
   font-size: 1rem;
   width: 300px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #ffffff;
 }
 
 .search-input:focus {
@@ -41,10 +41,10 @@ h1 {
 
 .sort-select {
   padding: 0.75rem 1rem;
-  border: 2px solid #e8e0d5;
+  border: 2px solid #f0f0f0;
   border-radius: 12px;
   font-size: 1rem;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -64,12 +64,12 @@ h1 {
 }
 
 .vegetable-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   border-radius: 20px;
   padding: 1.8rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  border: 1px solid #e8e0d5;
+  border: 1px solid #f0f0f0;
   position: relative;
   overflow: hidden;
 }
@@ -86,7 +86,7 @@ h1 {
 
 .vegetable-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .vegetable-card h2 {
@@ -108,7 +108,7 @@ h1 {
   justify-content: space-between;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
-  background: #faf6f1;
+  background: #fafafa;
   padding: 0.8rem;
   border-radius: 10px;
 }
@@ -129,7 +129,7 @@ h1 {
   font-weight: 600;
   margin: 0.8rem 0;
   padding: 0.8rem;
-  background: #faf6f1;
+  background: #fafafa;
   border-radius: 10px;
   text-align: center;
 }
@@ -141,7 +141,7 @@ h1 {
   font-size: 0.9rem;
   margin-top: 1.2rem;
   padding-top: 1rem;
-  border-top: 1px solid #e8e0d5;
+  border-top: 1px solid #f0f0f0;
 }
 
 .loading-container {
@@ -154,12 +154,12 @@ h1 {
 
 .loading {
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   border-radius: 20px;
   text-align: center;
   font-size: 1.2rem;
   color: #2e7d32;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   animation: pulse 2s infinite;
 }
 
@@ -173,11 +173,11 @@ h1 {
 
 .error {
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   border-radius: 20px;
   text-align: center;
   max-width: 500px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .error h2 {
@@ -202,13 +202,13 @@ h1 {
   font-size: 1rem;
   font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .retry-button:hover {
   background-color: #388e3c;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .no-results {
@@ -216,9 +216,9 @@ h1 {
   padding: 3rem;
   color: #558b2f;
   font-size: 1.2rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 @keyframes pulse {
