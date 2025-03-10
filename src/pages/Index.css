@@ -1,3 +1,19 @@
+/* Reset styles for root and body */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
 .vegetables-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
