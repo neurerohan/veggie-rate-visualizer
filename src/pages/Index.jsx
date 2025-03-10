@@ -24,7 +24,7 @@ const VegetableCard = ({ vegetable }) => {
       </div>
 
       <div className="meta">
-        <span>Per ({vegetable.unit})</span>
+        <span>Per {vegetable.unit}</span>
         <span>Date: {new Date(vegetable.scrape_date).toLocaleDateString()}</span>
       </div>
     </div>
